@@ -26,8 +26,8 @@ public class Generator {
 
     public static void main(String[] args) throws Exception {
         try {
-           //Generator generatorSqlmap = new Generator();
-            //generatorSqlmap.generator();
+            Generator generatorSqlmap = new Generator();
+            generatorSqlmap.generator();
         } catch (Exception e) {
             e.printStackTrace();
         }

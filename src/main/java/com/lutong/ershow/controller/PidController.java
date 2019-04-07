@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * @author lutong
  * @date 4/6/2019 - 6:14 PM
@@ -26,8 +28,13 @@ public class PidController {
     @ResponseBody
     @RequestMapping("pid")
     public int pid(Pid pid, User user){
-
         return pidService.insert(pid,user);
+    }
+
+    @ResponseBody
+    @RequestMapping("getPids")
+    public List<Pid> getPids(int foodsId){
+        return  pidService.getPids(foodsId);
     }
 
 }

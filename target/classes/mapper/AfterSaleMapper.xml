@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.AfterSaleMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.AfterSale">
+    <result column="afterSaleId" jdbcType="INTEGER" property="aftersaleid" />
+    <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="sellerScore" jdbcType="INTEGER" property="sellerscore" />
+    <result column="foodsScore" jdbcType="INTEGER" property="foodsscore" />
+    <result column="scoreTime" jdbcType="TIMESTAMP" property="scoretime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.AfterSale">
+    insert into afterSale (afterSaleId, foodsId, userId, 
+      sellerScore, foodsScore, scoreTime
+      )
+    values (#{aftersaleid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{sellerscore,jdbcType=INTEGER}, #{foodsscore,jdbcType=INTEGER}, #{scoretime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lutong.ershow.bean.AfterSale">
+    insert into afterSale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aftersaleid != null">
+        afterSaleId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="sellerscore != null">
+        sellerScore,
+      </if>
+      <if test="foodsscore != null">
+        foodsScore,
+      </if>
+      <if test="scoretime != null">
+        scoreTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aftersaleid != null">
+        #{aftersaleid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="sellerscore != null">
+        #{sellerscore,jdbcType=INTEGER},
+      </if>
+      <if test="foodsscore != null">
+        #{foodsscore,jdbcType=INTEGER},
+      </if>
+      <if test="scoretime != null">
+        #{scoretime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

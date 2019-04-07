@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.CommentsMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Comments">
+    <result column="commentId" jdbcType="INTEGER" property="commentid" />
+    <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="commentObject" jdbcType="INTEGER" property="commentobject" />
+    <result column="curLevel" jdbcType="INTEGER" property="curlevel" />
+    <result column="comments" jdbcType="VARCHAR" property="comments" />
+    <result column="commentTime" jdbcType="TIMESTAMP" property="commenttime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Comments">
+    insert into comments (commentId, foodsId, userId, 
+      nickName, photo, commentObject, 
+      curLevel, comments, commentTime
+      )
+    values (#{commentid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{nickname,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{commentobject,jdbcType=INTEGER}, 
+      #{curlevel,jdbcType=INTEGER}, #{comments,jdbcType=VARCHAR}, #{commenttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lutong.ershow.bean.Comments">
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        commentId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="commentobject != null">
+        commentObject,
+      </if>
+      <if test="curlevel != null">
+        curLevel,
+      </if>
+      <if test="comments != null">
+        comments,
+      </if>
+      <if test="commenttime != null">
+        commentTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="commentobject != null">
+        #{commentobject,jdbcType=INTEGER},
+      </if>
+      <if test="curlevel != null">
+        #{curlevel,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

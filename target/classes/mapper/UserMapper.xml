@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.User">
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="studentId" jdbcType="INTEGER" property="studentid" />
+    <result column="psword" jdbcType="VARCHAR" property="psword" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="autograph" jdbcType="VARCHAR" property="autograph" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="address1" jdbcType="VARCHAR" property="address1" />
+    <result column="address2" jdbcType="VARCHAR" property="address2" />
+    <result column="university" jdbcType="VARCHAR" property="university" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="className" jdbcType="VARCHAR" property="classname" />
+    <result column="stage" jdbcType="VARCHAR" property="stage" />
+    <result column="dorm" jdbcType="VARCHAR" property="dorm" />
+    <result column="authentication" jdbcType="INTEGER" property="authentication" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.User">
+    insert into user (userId, studentId, psword, 
+      phone, email, photo, 
+      nickName, autograph, userName, 
+      gender, birthday, address1, 
+      address2, university, school, 
+      major, className, stage, 
+      dorm, authentication)
+    values (#{userid}, #{studentid}, #{psword,jdbcType=VARCHAR},
+      #{phone}, #{email,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR},
+      #{nickname,jdbcType=VARCHAR}, #{autograph,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{address1,jdbcType=VARCHAR}, 
+      #{address2,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}, 
+      #{dorm,jdbcType=VARCHAR}, #{authentication,jdbcType=INTEGER})
+  </insert>
+
+  <select id="checkLogin" parameterType="com.lutong.ershow.bean.User" resultType="Integer">
+    select count(*) from user where studentId = #{studentid} and psword = #{psword}
+  </select>
+
+  <select id="getUserInfoById" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">
+    select * from user where userId =#{userid}
+  </select>
+
+
+</mapper>

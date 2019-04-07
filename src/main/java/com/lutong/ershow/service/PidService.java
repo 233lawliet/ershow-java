@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author lutong
@@ -30,10 +31,19 @@ public class PidService {
     @Autowired
     FoodsOrder foodsOrder;
 
+    @Autowired
+    User user;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    Pid pid;
+    //竞拍
     public int insert(Pid record, User user) {
 
 
+        System.out.println(record.getNickname()+""  +user.getNickname());
         //竞拍的时间 +竞拍信息录入
         record.setPidtime(new Date());
         pidMapper.insert(record);
@@ -53,5 +63,11 @@ public class PidService {
         return  1;
     }
 
+    //获取竞拍的信息
+    public List<Pid> getPids(int foodsid){
+
+        pid.setFoodsid(foodsid);
+        return  pidMapper.getPids(pid);
+    }
 
 }

@@ -5,12 +5,14 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class Pid {
+public class Pid{
     private Integer pidid;
 
     private Integer foodsid;
 
     private Integer buyerid;
+
+    private String nickname;
 
     private Date pidtime;
 
@@ -40,6 +42,14 @@ public class Pid {
         this.buyerid = buyerid;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
+    }
+
     public Date getPidtime() {
         return pidtime;
     }
@@ -54,16 +64,5 @@ public class Pid {
 
     public void setPidprice(Double pidprice) {
         this.pidprice = pidprice;
-    }
-
-    @Override
-    public String toString() {
-        return "Pid{" +
-                "pidid=" + pidid +
-                ", foodsid=" + foodsid +
-                ", buyerid=" + buyerid +
-                ", pidtime=" + pidtime +
-                ", pidprice=" + pidprice +
-                '}';
     }
 }

@@ -14,4 +14,7 @@ public interface UserMapper {
 
     //获取用户的信息(治用的了id)
     User getUserInfoById(User user);
+
+
+
 }

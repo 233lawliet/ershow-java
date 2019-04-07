@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.TypeMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Type">
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="typeName" jdbcType="VARCHAR" property="typename" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Type">
+    insert into type (typeId, typeName)
+    values (#{typeid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lutong.ershow.bean.Type">
+    insert into type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typeid != null">
+        typeId,
+      </if>
+      <if test="typename != null">
+        typeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
