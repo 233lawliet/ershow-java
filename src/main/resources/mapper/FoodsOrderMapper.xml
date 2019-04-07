@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.FoodsOrderMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.FoodsOrder">
+    <result column="orderId" jdbcType="INTEGER" property="orderid" />
+    <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
+    <result column="sellerId" jdbcType="INTEGER" property="sellerid" />
+    <result column="sellerName" jdbcType="VARCHAR" property="sellername" />
+    <result column="buyerId" jdbcType="INTEGER" property="buyerid" />
+    <result column="buyerName" jdbcType="VARCHAR" property="buyername" />
+    <result column="buyerPrice" jdbcType="DOUBLE" property="buyerprice" />
+    <result column="tranPlace" jdbcType="VARCHAR" property="tranplace" />
+    <result column="tranTime" jdbcType="TIMESTAMP" property="trantime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.FoodsOrder">
+    insert into foodsOrder (orderId, foodsId, foodsName,
+      sellerId, sellerName, buyerId,
+      buyerName, buyerPrice, tranPlace,
+      tranTime)
+    values (#{orderid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{foodsname,jdbcType=VARCHAR},
+      #{sellerid,jdbcType=INTEGER}, #{sellername,jdbcType=VARCHAR}, #{buyerid,jdbcType=INTEGER},
+      #{buyername,jdbcType=VARCHAR}, #{buyerprice,jdbcType=DOUBLE}, #{tranplace,jdbcType=VARCHAR},
+      #{trantime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <!--修改最大投资者的id-->
+  <update id="updateMaxPid"  parameterType="com.lutong.ershow.bean.FoodsOrder" >
+    update foodsOrder set buyerId =#{buyerid}, buyerName =#{buyername}, buyerPrice=#{buyerprice}
+    where foodsId =#{foodsid}
+  </update>
+
+
+  <!--通过id获取指定的订单信息-->
+  <select id="getFoodsOrderById" parameterType="com.lutong.ershow.bean.FoodsOrder" resultType="com.lutong.ershow.bean.FoodsOrder">
+    select * from foodsOrder where foodsId =#{foodsid}
+  </select>
+
+
+</mapper>

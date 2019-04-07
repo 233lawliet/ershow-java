@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Message">
+    <result column="messageId" jdbcType="INTEGER" property="messageid" />
+    <result column="senderId" jdbcType="INTEGER" property="senderid" />
+    <result column="senderName" jdbcType="VARCHAR" property="sendername" />
+    <result column="sendTime" jdbcType="TIMESTAMP" property="sendtime" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="receiverId" jdbcType="INTEGER" property="receiverid" />
+    <result column="receiverName" jdbcType="VARCHAR" property="receivername" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Message">
+    insert into message (messageId, senderId, senderName, 
+      sendTime, message, receiverId, 
+      receiverName)
+    values (#{messageid,jdbcType=INTEGER}, #{senderid,jdbcType=INTEGER}, #{sendername,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=TIMESTAMP}, #{message,jdbcType=VARCHAR}, #{receiverid,jdbcType=INTEGER}, 
+      #{receivername,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lutong.ershow.bean.Message">
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="messageid != null">
+        messageId,
+      </if>
+      <if test="senderid != null">
+        senderId,
+      </if>
+      <if test="sendername != null">
+        senderName,
+      </if>
+      <if test="sendtime != null">
+        sendTime,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="receiverid != null">
+        receiverId,
+      </if>
+      <if test="receivername != null">
+        receiverName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="messageid != null">
+        #{messageid,jdbcType=INTEGER},
+      </if>
+      <if test="senderid != null">
+        #{senderid,jdbcType=INTEGER},
+      </if>
+      <if test="sendername != null">
+        #{sendername,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverid != null">
+        #{receiverid,jdbcType=INTEGER},
+      </if>
+      <if test="receivername != null">
+        #{receivername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

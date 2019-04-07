@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.PidMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Pid">
+    <result column="pidId" jdbcType="INTEGER" property="pidid" />
+    <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="buyerId" jdbcType="INTEGER" property="buyerid" />
+    <result column="pidTime" jdbcType="TIMESTAMP" property="pidtime" />
+    <result column="pidPrice" jdbcType="DOUBLE" property="pidprice" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Pid">
+    insert into pid (pidId, foodsId, buyerId, 
+      pidTime, pidPrice)
+    values (#{pidid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{buyerid,jdbcType=INTEGER}, 
+      #{pidtime,jdbcType=TIMESTAMP}, #{pidprice,jdbcType=DOUBLE})
+  </insert>
+
+  <update id="updateMaxPid"  parameterType="com.lutong.ershow.bean.Pid" >
+    update foodsOrder set buyerId =#{buyerid}, buyerName =#{buyername}, buyerPrice=#{buyerprice}
+    where foodsId =#{foodsid}
+  </update>
+</mapper>

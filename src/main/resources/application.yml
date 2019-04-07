@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+debug: false
+
+
+
+spring:
+  mvc:
+    date-format: yyyy-MM-dd  #前端时间格式
+  datasource:
+    url: jdbc:mysql://maoerfei.cn:3306/ershow
+    username: lutong
+    password: llt19970518
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  config-location: classpath:mybatis/mybatisConfig.xml
+  mapper-locations: classpath:mapper/*.xml
+
+  #实体bean所在目录
+  type-aliases-package: com.lutong.ershow.bean

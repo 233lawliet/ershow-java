@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lutong.ershow.mapper.FoodsMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Foods">
+    <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="foodsInfo" jdbcType="VARCHAR" property="foodsinfo" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="image3" jdbcType="VARCHAR" property="image3" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="hours" jdbcType="INTEGER" property="hours" />
+    <result column="startPrice" jdbcType="DOUBLE" property="startprice" />
+    <result column="place" jdbcType="VARCHAR" property="place" />
+  </resultMap>
+
+
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Foods">
+    insert into foods (foodsId, foodsName, typeId, 
+      foodsInfo, image1, image2, 
+      image3, userId, startTime, 
+      hours, startPrice, place
+      )
+    values (#{foodsid,jdbcType=INTEGER}, #{foodsname,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, 
+      #{foodsinfo,jdbcType=VARCHAR}, #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, 
+      #{image3,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{hours,jdbcType=INTEGER}, #{startprice,jdbcType=DOUBLE}, #{place,jdbcType=VARCHAR}
+      )
+  </insert>
+
+
+  <select id="getAllFoods" resultMap="BaseResultMap">
+      select * from foods;
+  </select>
+
+
+  <select id="getFoodsById" parameterType="int" resultType="com.lutong.ershow.bean.Foods">
+      select * from foods where id =#{id};
+  </select>
+
+
+</mapper>
