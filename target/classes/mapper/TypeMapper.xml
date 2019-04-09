@@ -9,23 +9,8 @@
     insert into type (typeId, typeName)
     values (#{typeid,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lutong.ershow.bean.Type">
-    insert into type
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="typeid != null">
-        typeId,
-      </if>
-      <if test="typename != null">
-        typeName,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="typeid != null">
-        #{typeid,jdbcType=INTEGER},
-      </if>
-      <if test="typename != null">
-        #{typename,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
+
+  <select id="getTypes" resultType="com.lutong.ershow.bean.Type">
+    select * from type
+  </select>
 </mapper>

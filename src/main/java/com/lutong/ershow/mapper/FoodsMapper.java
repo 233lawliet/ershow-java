@@ -16,4 +16,7 @@ public interface FoodsMapper {
 
     Foods getFoodsById(int id);
 
+    //获取所有的商品
+    List<Foods> getFoodsByName(String name);
+
 }

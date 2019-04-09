@@ -37,9 +37,14 @@
   </select>
 
 
-  <select id="getFoodsById" parameterType="int" resultType="com.lutong.ershow.bean.Foods">
-      select * from foods where id =#{id};
+  <select id="getFoodsById" parameterType="Integer" resultType="com.lutong.ershow.bean.Foods">
+      select * from foods where foodsId =#{id};
   </select>
 
+
+
+  <select id="getFoodsByName"   parameterType="String" resultType="com.lutong.ershow.bean.Foods">
+      select  * from foods where   foodsName like  concat('%',#{name},'%')
+  </select>
 
 </mapper>

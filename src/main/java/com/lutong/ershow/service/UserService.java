@@ -22,7 +22,7 @@ public class UserService  {
         return userMapper.insert(record);
     }
 
-    public int checkLogin(User user){
+    public User checkLogin(User user){
         return userMapper.checkLogin(user);
     }
 

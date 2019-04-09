@@ -24,6 +24,8 @@ public class FoodsService {
     FoodsMapper foodsMapper;
 
     @Autowired
+    FoodsOrder foodsOrder;
+    @Autowired
     FoodsOrderService foodsOrderService;
 
     @Autowired
@@ -71,13 +73,19 @@ public class FoodsService {
     public List<Foods> getAllFoods() {
 
         List<Foods> foodss= foodsMapper.getAllFoods();
-        for(Foods foods:foodss){
-            foodsOthers.setFoodsid(foods.getFoodsid());
-            //添加其他信息 + 当前价格信息
-            foodsOthers=foodsOthersService.getFoodsOthers(foodsOthers);
-            Double curPrice=foodsOrderService.getFoodsOrderById(foods.getFoodsid()).getBuyerprice();
 
-            foods.setCurPrice(curPrice);
+
+        //丰富foods信息，不改变数据库结构
+        for(Foods foods:foodss){
+
+            //添加其他信息
+            foodsOthers.setFoodsid(foods.getFoodsid());
+            foodsOthers=foodsOthersService.getFoodsOthers(foodsOthers);
+            // 当前价格信息 +当前用户id
+            foodsOrder=foodsOrderService.getFoodsOrderById(foods.getFoodsid());
+            foods.setCurPrice(foodsOrder.getBuyerprice());
+            foods.setBuyerid(foodsOrder.getBuyerid());
+
             foods.setFoodsOthers(foodsOthers);
         }
         return  foodss;
@@ -88,5 +96,26 @@ public class FoodsService {
         return foodsMapper.getFoodsById(id);
     }
 
+    public List<Foods> getFoodsByName(String name){
+
+
+        List<Foods> foodss= foodsMapper.getFoodsByName(name);
+
+
+        //丰富foods信息，不改变数据库结构
+        for(Foods foods:foodss){
+
+            //添加其他信息
+            foodsOthers.setFoodsid(foods.getFoodsid());
+            foodsOthers=foodsOthersService.getFoodsOthers(foodsOthers);
+            // 当前价格信息 +当前用户id
+            foodsOrder=foodsOrderService.getFoodsOrderById(foods.getFoodsid());
+            foods.setCurPrice(foodsOrder.getBuyerprice());
+            foods.setBuyerid(foodsOrder.getBuyerid());
+
+            foods.setFoodsOthers(foodsOthers);
+        }
+        return  foodss;
+    }
 
 }

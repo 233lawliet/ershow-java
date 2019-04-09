@@ -40,10 +40,9 @@ public class PidService {
     @Autowired
     Pid pid;
     //竞拍
-    public int insert(Pid record, User user) {
+    public int  insert(Pid record, User user) {
 
 
-        System.out.println(record.getNickname()+""  +user.getNickname());
         //竞拍的时间 +竞拍信息录入
         record.setPidtime(new Date());
         pidMapper.insert(record);

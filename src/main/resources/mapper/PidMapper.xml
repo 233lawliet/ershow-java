@@ -26,6 +26,6 @@
 
   <!--&lt;!&ndash;获取某个物品所有的竞拍信息&ndash;&gt;-->
   <select id="getPids" parameterType="com.lutong.ershow.bean.Pid"  resultType="com.lutong.ershow.bean.Pid">
-      select * from pid where  foodsId = #{foodsid}
+      select * from pid where  foodsId = #{foodsid} order by pidTime desc;
   </select>
 </mapper>

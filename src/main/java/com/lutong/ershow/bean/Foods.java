@@ -37,7 +37,19 @@ public class Foods {
 
     private FoodsOthers foodsOthers;
 
+    //当前的价格
     private Double curPrice;
+
+    //投标的用户的id
+    private Integer buyerid;
+
+    public Integer getBuyerid() {
+        return buyerid;
+    }
+
+    public void setBuyerid(Integer buyerid) {
+        this.buyerid = buyerid;
+    }
 
     //获取当前的价格
     public Double getCurPrice() {

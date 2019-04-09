@@ -33,7 +33,12 @@ public class FoodsController {
         return  foodsService.getAllFoods();
     }
 
-
+    //獲取所有的商品
+    @ResponseBody
+    @RequestMapping("getFoodsById")
+    public Foods getFoodsById(Integer foodsId){
+        return foodsService.getFoodsById(foodsId);
+    }
 
 
 
@@ -45,5 +50,11 @@ public class FoodsController {
     }
 
 
+    //模糊查找
+    @ResponseBody
+    @RequestMapping("getFoodsByName")
+    public List<Foods> getFoodsByName(String name){
+        return  foodsService.getFoodsByName(name);
+    }
 
 }

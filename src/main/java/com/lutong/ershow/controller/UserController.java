@@ -30,7 +30,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("checkLogin")
-    public int checkLogin(User user){
+    public User checkLogin(User user){
         return userService.checkLogin(user);
     }
 

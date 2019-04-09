@@ -40,8 +40,8 @@
       #{dorm,jdbcType=VARCHAR}, #{authentication,jdbcType=INTEGER})
   </insert>
 
-  <select id="checkLogin" parameterType="com.lutong.ershow.bean.User" resultType="Integer">
-    select count(*) from user where studentId = #{studentid} and psword = #{psword}
+  <select id="checkLogin" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">
+    select * from user where studentId = #{studentid} and psword = #{psword}
   </select>
 
   <select id="getUserInfoById" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">

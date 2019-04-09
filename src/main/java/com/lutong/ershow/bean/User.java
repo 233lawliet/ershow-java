@@ -206,4 +206,7 @@ public class User {
     public void setAuthentication(Integer authentication) {
         this.authentication = authentication;
     }
+
+
+    
 }

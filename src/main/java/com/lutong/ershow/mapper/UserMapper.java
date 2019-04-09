@@ -10,7 +10,7 @@ public interface UserMapper {
     int insertSelective(User record);
 
     //检查用户登录
-    int checkLogin(User user);
+    User checkLogin(User user);
 
     //获取用户的信息(治用的了id)
     User getUserInfoById(User user);
