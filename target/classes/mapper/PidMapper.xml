@@ -28,4 +28,10 @@
   <select id="getPids" parameterType="com.lutong.ershow.bean.Pid"  resultType="com.lutong.ershow.bean.Pid">
       select * from pid where  foodsId = #{foodsid} order by pidTime desc;
   </select>
+
+
+  <!--某个人竞拍过的记录-->
+  <select id="getPidsByBuyer" parameterType="Integer" resultType="com.lutong.ershow.bean.Pid">
+    select * from pid where  buyerId = #{buyerid} ;
+  </select>
 </mapper>

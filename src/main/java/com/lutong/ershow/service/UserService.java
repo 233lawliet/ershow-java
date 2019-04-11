@@ -26,9 +26,16 @@ public class UserService  {
         return userMapper.checkLogin(user);
     }
 
+    public Integer checkAccount(User user){
+        return userMapper.checkAccount(user);
+    }
 
     public User getUserInfoById(User user){
         return userMapper.getUserInfoById(user);
     };
+
+    public int updateUserInfo(User user){
+        return  userMapper.updateUserInfo(user);
+    }
 
 }

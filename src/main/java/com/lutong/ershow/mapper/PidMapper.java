@@ -11,4 +11,5 @@ public interface PidMapper {
 
     //获取所有的pid
     List<Pid> getPids(Pid pid);
+    List<Pid> getPidsByBuyer(Integer buyerId);
 }

@@ -37,4 +37,10 @@ public class PidController {
         return  pidService.getPids(foodsId);
     }
 
+    @ResponseBody
+    @RequestMapping("getPidsByBuyer")
+    public List<Pid> getPidsByBuyer(Integer buyerid){
+        return  pidService.getPidsByBuyer(buyerid);
+    }
+
 }

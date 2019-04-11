@@ -5,6 +5,8 @@ import com.lutong.ershow.mapper.FoodsOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author lutong
  * @date 4/4/2019 - 10:02 PM
@@ -31,4 +33,12 @@ public class FoodsOrderService  {
         foodsOrder.setFoodsid(foodsId);
         return  foodsOrderMapper.getFoodsOrderById(foodsOrder);
     }
+
+    public List<FoodsOrder> getFoodsOrderByBuyer(Integer buyerId){
+        return  foodsOrderMapper.getFoodsOrderByBuyer(buyerId);
+    }
+    public List<FoodsOrder> getFoodsOrderBySeller(Integer sellerId){
+        return  foodsOrderMapper.getFoodsOrderBySeller(sellerId);
+    }
+
 }

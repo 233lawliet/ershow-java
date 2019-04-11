@@ -37,5 +37,11 @@
   </select>
 
 
+  <select id="getFoodsOrderByBuyer" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
+    select * from foodsOrder where buyerid =#{buyerid}
+  </select>
+  <select id="getFoodsOrderBySeller" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
+    select * from foodsOrder where sellerId =#{sellerid}
+  </select>
 
 </mapper>

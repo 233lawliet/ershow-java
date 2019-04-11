@@ -12,7 +12,7 @@
     <result column="autograph" jdbcType="VARCHAR" property="autograph" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="gender" jdbcType="INTEGER" property="gender" />
-    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="age" jdbcType="INTEGER" property="age" />
     <result column="address1" jdbcType="VARCHAR" property="address1" />
     <result column="address2" jdbcType="VARCHAR" property="address2" />
     <result column="university" jdbcType="VARCHAR" property="university" />
@@ -27,14 +27,14 @@
     insert into user (userId, studentId, psword, 
       phone, email, photo, 
       nickName, autograph, userName, 
-      gender, birthday, address1, 
+      gender, age, address1,
       address2, university, school, 
       major, className, stage, 
       dorm, authentication)
     values (#{userid}, #{studentid}, #{psword,jdbcType=VARCHAR},
       #{phone}, #{email,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR},
       #{nickname,jdbcType=VARCHAR}, #{autograph,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{address1,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{address1,jdbcType=VARCHAR},
       #{address2,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
       #{major,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{stage,jdbcType=VARCHAR}, 
       #{dorm,jdbcType=VARCHAR}, #{authentication,jdbcType=INTEGER})
@@ -44,9 +44,42 @@
     select * from user where studentId = #{studentid} and psword = #{psword}
   </select>
 
-  <select id="getUserInfoById" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">
-    select * from user where userId =#{userid}
+  <select id="checkAccount" parameterType="com.lutong.ershow.bean.User" resultType="Integer">
+    select count(*) from user where studentId = #{studentid}
   </select>
 
+  <select id="getUserInfoById" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">
+    select * from user where studentId =#{studentid}
+  </select>
 
+  <update id="updateUserInfo" parameterType="com.lutong.ershow.bean.User"   >
+    UPDATE user
+
+            <trim prefix="set" suffixOverrides=",">
+
+    <if test="psword!=null">psword=#{psword},</if>
+
+    <if test="phone!=null">phone=#{phone},</if>
+    <if test="email!=null">email=#{email},</if>
+    <if test="photo!=null">photo=#{photo},</if>
+
+    <if test="nickname!=null">nickName=#{nickname},</if>
+    <if test="autograph!=null">autograph=#{autograph},</if>
+    <if test="username!=null">userName=#{username},</if>
+
+    <if test="gender!=null">gender=#{gender},</if>
+    <if test="age!=null">age=#{age},</if>
+    <if test="address1!=null">address1=#{address1},</if>
+    <if test="address2!=null">address2=#{address2},</if>
+
+    <if test="university!=null">university=#{university},</if>
+    <if test="school!=null">school=#{school},</if>
+    <if test="major!=null">major=#{major},</if>
+    <if test="classname!=null">className=#{classname},</if>
+    <if test="stage!=null">stage=#{stage},</if>
+    <if test="dorm!=null">dorm=#{dorm},</if>
+    <if test="authentication!=null">authentication=#{authentication},</if>
+  </trim>
+    where studentId =#{studentid}
+  </update>
 </mapper>

@@ -12,8 +12,14 @@ public interface UserMapper {
     //检查用户登录
     User checkLogin(User user);
 
+    //检测账号是否存在
+    Integer checkAccount(User user);
+
     //获取用户的信息(治用的了id)
     User getUserInfoById(User user);
+
+    //更新用户的信息
+    Integer updateUserInfo(User user);
 
 
 

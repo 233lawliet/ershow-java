@@ -69,4 +69,7 @@ public class PidService {
         return  pidMapper.getPids(pid);
     }
 
+    public List<Pid> getPidsByBuyer(Integer buyerId){
+        return pidMapper.getPidsByBuyer(buyerId);
+    }
 }

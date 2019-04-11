@@ -27,7 +27,7 @@ public class User {
 
     private Integer gender;
 
-    private Date birthday;
+    private Integer age;
 
     private String address1;
 
@@ -127,12 +127,12 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getAddress1() {
@@ -207,6 +207,29 @@ public class User {
         this.authentication = authentication;
     }
 
-
-    
+    @Override
+    public String toString() {
+        return "User{" +
+                "userid=" + userid +
+                ", studentid=" + studentid +
+                ", psword='" + psword + '\'' +
+                ", phone=" + phone +
+                ", email='" + email + '\'' +
+                ", photo='" + photo + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", autograph='" + autograph + '\'' +
+                ", username='" + username + '\'' +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", university='" + university + '\'' +
+                ", school='" + school + '\'' +
+                ", major='" + major + '\'' +
+                ", classname='" + classname + '\'' +
+                ", stage='" + stage + '\'' +
+                ", dorm='" + dorm + '\'' +
+                ", authentication=" + authentication +
+                '}';
+    }
 }
