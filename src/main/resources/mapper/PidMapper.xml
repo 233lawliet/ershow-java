@@ -4,16 +4,17 @@
   <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Pid">
     <result column="pidId" jdbcType="INTEGER" property="pidid" />
     <result column="foodsId" jdbcType="INTEGER" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
     <result column="buyerId" jdbcType="INTEGER" property="buyerid" />
     <result column="nickName" jdbcType="VARCHAR" property="nickname" />
     <result column="pidTime" jdbcType="TIMESTAMP" property="pidtime" />
     <result column="pidPrice" jdbcType="DOUBLE" property="pidprice" />
   </resultMap>
   <insert id="insert" parameterType="com.lutong.ershow.bean.Pid">
-    insert into pid (pidId, foodsId, buyerId,
+    insert into pid (pidId, foodsId, foodsName ,buyerId,
       nickName, pidTime, pidPrice
       )
-    values (#{pidid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{buyerid,jdbcType=INTEGER},
+    values (#{pidid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER},#{foodsname,jdbcType=VARCHAR}, #{buyerid,jdbcType=INTEGER},
       #{nickname,jdbcType=VARCHAR}, #{pidtime,jdbcType=TIMESTAMP}, #{pidprice,jdbcType=DOUBLE}
       )
   </insert>

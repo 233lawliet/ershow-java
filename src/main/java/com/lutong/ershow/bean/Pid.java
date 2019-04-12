@@ -10,6 +10,8 @@ public class Pid{
 
     private Integer foodsid;
 
+    private String foodsname;
+
     private Integer buyerid;
 
     private String nickname;
@@ -34,6 +36,14 @@ public class Pid{
         this.foodsid = foodsid;
     }
 
+    public String getFoodsname() {
+        return foodsname;
+    }
+
+    public void setFoodsname(String foodsname) {
+        this.foodsname = foodsname;
+    }
+
     public Integer getBuyerid() {
         return buyerid;
     }
@@ -53,6 +63,8 @@ public class Pid{
     public Date getPidtime() {
         return pidtime;
     }
+
+
 
     public void setPidtime(Date pidtime) {
         this.pidtime = pidtime;
