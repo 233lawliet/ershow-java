@@ -33,18 +33,18 @@
 
 
   <select id="getAllFoods" resultMap="BaseResultMap">
-      select * from foods;
+      select * from foods  order  by  startTime desc;
   </select>
 
 
   <select id="getFoodsById" parameterType="Integer" resultType="com.lutong.ershow.bean.Foods">
-      select * from foods where foodsId =#{id};
+      select * from foods where foodsId =#{id}  order  by  startTime desc ;
   </select>
 
 
 
   <select id="getFoodsByName"   parameterType="String" resultType="com.lutong.ershow.bean.Foods">
-      select  * from foods where   foodsName like  concat('%',#{name},'%')
+      select  * from foods where   foodsName like  concat('%',#{name},'%')  order  by  startTime desc;
   </select>
 
 </mapper>

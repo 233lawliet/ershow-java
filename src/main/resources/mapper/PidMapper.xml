@@ -33,6 +33,6 @@
 
   <!--某个人竞拍过的记录-->
   <select id="getPidsByBuyer" parameterType="Integer" resultType="com.lutong.ershow.bean.Pid">
-    select * from pid where  buyerId = #{buyerid} ;
+    select * from pid where  buyerId = #{buyerid}  order by pidTime desc;
   </select>
 </mapper>

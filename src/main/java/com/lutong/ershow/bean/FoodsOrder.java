@@ -16,6 +16,8 @@ public class FoodsOrder {
 
     private String sellername;
 
+    private Double sellerprice;
+
     private Integer buyerid;
 
     private String buyername;
@@ -54,6 +56,14 @@ public class FoodsOrder {
         return sellerid;
     }
 
+    public Double getSellerprice() {
+        return sellerprice;
+    }
+
+    public void setSellerprice(Double sellerprice) {
+        this.sellerprice = sellerprice;
+    }
+
     public void setSellerid(Integer sellerid) {
         this.sellerid = sellerid;
     }
@@ -65,6 +75,8 @@ public class FoodsOrder {
     public void setSellername(String sellername) {
         this.sellername = sellername == null ? null : sellername.trim();
     }
+
+
 
     public Integer getBuyerid() {
         return buyerid;

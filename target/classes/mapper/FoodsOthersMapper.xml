@@ -63,6 +63,7 @@
   set comments = #{comments}
   where foodsId =#{foodsid}
 </update>
+
   <select id="getFoodsOthers" resultType="com.lutong.ershow.bean.FoodsOthers" parameterType="com.lutong.ershow.bean.FoodsOthers">
     select * from foodsOthers where foodsId = #{foodsid}
   </select>

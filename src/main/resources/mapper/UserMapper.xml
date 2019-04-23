@@ -49,7 +49,7 @@
   </select>
 
   <select id="getUserInfoById" parameterType="com.lutong.ershow.bean.User" resultType="com.lutong.ershow.bean.User">
-    select * from user where studentId =#{studentid}
+    select * from user where userId =#{userid}
   </select>
 
   <update id="updateUserInfo" parameterType="com.lutong.ershow.bean.User"   >

@@ -7,6 +7,7 @@
     <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
     <result column="sellerId" jdbcType="INTEGER" property="sellerid" />
     <result column="sellerName" jdbcType="VARCHAR" property="sellername" />
+    <result column="sellerPrice" jdbcType="DOUBLE" property="sellerprice" />
     <result column="buyerId" jdbcType="INTEGER" property="buyerid" />
     <result column="buyerName" jdbcType="VARCHAR" property="buyername" />
     <result column="buyerPrice" jdbcType="DOUBLE" property="buyerprice" />
@@ -15,13 +16,13 @@
   </resultMap>
   <insert id="insert" parameterType="com.lutong.ershow.bean.FoodsOrder">
     insert into foodsOrder (orderId, foodsId, foodsName,
-      sellerId, sellerName, buyerId,
+      sellerId, sellerName,sellerPrice, buyerId,
       buyerName, buyerPrice, tranPlace,
       tranTime)
     values (#{orderid,jdbcType=INTEGER}, #{foodsid,jdbcType=INTEGER}, #{foodsname,jdbcType=VARCHAR},
-      #{sellerid,jdbcType=INTEGER}, #{sellername,jdbcType=VARCHAR}, #{buyerid,jdbcType=INTEGER},
-      #{buyername,jdbcType=VARCHAR}, #{buyerprice,jdbcType=DOUBLE}, #{tranplace,jdbcType=VARCHAR},
-      #{trantime,jdbcType=TIMESTAMP})
+      #{sellerid,jdbcType=INTEGER}, #{sellername,jdbcType=VARCHAR},#{sellerprice,jdbcType=DOUBLE},
+       #{buyerid,jdbcType=INTEGER},#{buyername,jdbcType=VARCHAR}, #{buyerprice,jdbcType=DOUBLE},
+       #{tranplace,jdbcType=VARCHAR},#{trantime,jdbcType=TIMESTAMP})
   </insert>
 
   <!--修改最大投资者的id-->
@@ -40,8 +41,9 @@
   <select id="getFoodsOrderByBuyer" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
     select * from foodsOrder where buyerid =#{buyerid}
   </select>
+
   <select id="getFoodsOrderBySeller" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
-    select * from foodsOrder where sellerId =#{sellerid}
+    select * from foodsOrder where sellerId =#{sellerid} order by  orderId desc
   </select>
 
 </mapper>
