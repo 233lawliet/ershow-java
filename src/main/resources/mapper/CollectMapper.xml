@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lutong.ershow.mapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="com.lutong.ershow.bean.Collect">
+    <result column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="foodsId" jdbcType="BIGINT" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+
+
+
+  <insert id="insert" parameterType="com.lutong.ershow.bean.Collect">
+   insert into collect (collectId, foodsId, foodsName,
+      image, userId)
+    values (#{collectid,jdbcType=INTEGER}, #{foodsid,jdbcType=BIGINT}, #{foodsname,jdbcType=VARCHAR},
+      #{image,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT})
+  </insert>
+
+
+
+  <!--获取某个用户的所有收藏-->
+
+  <select id="getCollect" parameterType="Long"  resultType="com.lutong.ershow.bean.Collect">
+    select  * from collect where userId =  #{userid,jdbcType=BIGINT}
+  </select>
+
+
+  <delete id="deleteCollect" parameterType="com.lutong.ershow.bean.Collect">
+    delete from collect where  userId=#{userid} and foodsId =#{foodsid};
+  </delete>
+
+</mapper>

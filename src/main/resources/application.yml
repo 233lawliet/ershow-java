@@ -5,6 +5,7 @@ debug: false
 
 
 
+
 spring:
   mvc:
     date-format: yyyy-MM-dd  #前端时间格式

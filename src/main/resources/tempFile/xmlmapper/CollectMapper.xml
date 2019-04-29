@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="javamapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="bean.Collect">
+    <result column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="foodsId" jdbcType="BIGINT" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <insert id="insert" parameterType="bean.Collect">
+    insert into collect (collectId, foodsId, foodsName, 
+      image, userId)
+    values (#{collectid,jdbcType=INTEGER}, #{foodsid,jdbcType=BIGINT}, #{foodsname,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="bean.Collect">
+    insert into collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        collectId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="foodsname != null">
+        foodsName,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        #{collectid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=BIGINT},
+      </if>
+      <if test="foodsname != null">
+        #{foodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="bean.Collect">
+    <result column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="foodsId" jdbcType="BIGINT" property="foodsid" />
+    <result column="foodsName" jdbcType="VARCHAR" property="foodsname" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <insert id="insert" parameterType="bean.Collect">
+    insert into collect (collectId, foodsId, foodsName, 
+      image, userId)
+    values (#{collectid,jdbcType=INTEGER}, #{foodsid,jdbcType=BIGINT}, #{foodsname,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="bean.Collect">
+    insert into collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        collectId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="foodsname != null">
+        foodsName,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        #{collectid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=BIGINT},
+      </if>
+      <if test="foodsname != null">
+        #{foodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="bean.Collect">
+    <result column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="foodsId" jdbcType="BIGINT" property="foodsid" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <insert id="insert" parameterType="bean.Collect">
+    insert into collect (collectId, foodsId, userId
+      )
+    values (#{collectid,jdbcType=INTEGER}, #{foodsid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="bean.Collect">
+    insert into collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        collectId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        #{collectid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="bean.Collect">
+    <result column="collectId" jdbcType="INTEGER" property="collectid" />
+    <result column="foodsId" jdbcType="BIGINT" property="foodsid" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <insert id="insert" parameterType="bean.Collect">
+    insert into collect (collectId, foodsId, userId
+      )
+    values (#{collectid,jdbcType=INTEGER}, #{foodsid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="bean.Collect">
+    insert into collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        collectId,
+      </if>
+      <if test="foodsid != null">
+        foodsId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectid != null">
+        #{collectid,jdbcType=INTEGER},
+      </if>
+      <if test="foodsid != null">
+        #{foodsid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

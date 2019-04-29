@@ -52,7 +52,7 @@ public class FoodsService {
          //订单表
         FoodsOrder foodsOrder=new FoodsOrder();
         foodsOrder.setSellerid(user.getUserid()); //用户id
-        foodsOrder.setSellername(user.getUsername());  //用户昵称
+        foodsOrder.setSellername(user.getNickname());  //用户昵称
         foodsOrder.setSellerprice(foods.getStartprice());  //初始价格
         foodsOrder.setFoodsid(foods.getFoodsid()); //商品id
         foodsOrder.setFoodsname(foods.getFoodsname()); //商品名称

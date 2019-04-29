@@ -41,4 +41,17 @@ public class FoodsOrderService  {
         return  foodsOrderMapper.getFoodsOrderBySeller(sellerId);
     }
 
+    public List<FoodsOrder> getAllFoodsOrder(Integer sellerId){
+        return  foodsOrderMapper.getAllFoodsOrder(sellerId);
+    }
+
+
+    public FoodsOrder getFoodsOrderByOrderID(Integer orderid){
+        return  foodsOrderMapper.getFoodsOrderByOrderID(orderid);
+    }
+    public Integer getCountOrder(){
+        return  foodsOrderMapper.getCountOrder();
+    }
+
+
 }

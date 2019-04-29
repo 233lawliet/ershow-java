@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author lutong
@@ -22,6 +23,13 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+
+    @ResponseBody
+    @RequestMapping("allUsers")
+    public List<User> getAllUsers(){
+        return userService.allUsers();
+    }
 
     @ResponseBody
     @RequestMapping("insertUser")

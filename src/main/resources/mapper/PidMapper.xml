@@ -35,4 +35,81 @@
   <select id="getPidsByBuyer" parameterType="Integer" resultType="com.lutong.ershow.bean.Pid">
     select * from pid where  buyerId = #{buyerid}  order by pidTime desc;
   </select>
+  
+  
+  <!--获取某天的次数-->
+  <select id="getCountByDay" parameterType="com.lutong.ershow.utils.TimeFormat" resultType="Integer">
+    select count(*) from  pid
+	where year(pidTime) =#{year}
+	and  month(pidTime) =#{month}
+	and day(pidTime) =#{day}
+  </select>
+
+  <!--获取某天的次数-->
+  <select id="getOrderTimes" parameterType="com.lutong.ershow.utils.TimeFormat" resultType="Integer">
+    select count(*) from  foods
+	where year(startTime) =#{year}
+	and  month(startTime) =#{month}
+	and day(startTime) =#{day}
+  </select>
+  
+  
+  <!--获取竞拍总次数前三-->
+  <select id="getPidTimesThree" resultType="java.util.HashMap">
+      select count(*) time,buyerId,nickName
+      from  pid
+      GROUP BY  buyerId
+      order by  count(*)  desc
+      LIMIT 0,3
+  </select>
+
+  <!--总消费前三-->
+  <select id="getPidPricesThree" resultType="java.util.HashMap">
+    select   truncate(sum(buyerPrice),2) price,buyerId,buyerName nickName
+    from  foodsOrder
+		WHERE buyerId is not null
+    GROUP BY  buyerId
+    order by   price desc
+    LIMIT 0,3
+  </select>
+
+  <!--盈利前三-->
+  <select id="getOrderPriceThree" resultType="java.util.HashMap">
+    select sum(buyerPrice) price,sellerId,sellerName
+    from  foodsOrder
+    GROUP BY  sellerId
+    order by   sum(buyerPrice) desc
+    LIMIT 0,3
+  </select>
+
+  <!--评价最多的前三-->
+  <select id="getCommentsThree" resultType="java.util.HashMap">
+  select count(*) time,userId,nickName
+  from  comments
+  GROUP BY  userId
+  order by  count(*)  desc
+  LIMIT 0,3
+</select>
+
+
+  <!--单个竞价前三-->
+  <select id="getPidThree" resultType="java.util.HashMap">
+    select foodsId,foodsName,max(pidPrice) price
+from pid
+GROUP BY foodsId
+order by price  DESC
+limit 0,3
+  </select>
+
+  <!--单个竞价前三-->
+  <select id="getPidTimeThree" resultType="java.util.HashMap">
+    select foodsId,foodsName,count(*) time
+from pid
+GROUP BY foodsId
+order by time  DESC
+limit 0,3
+  </select>
+
+
+
 </mapper>

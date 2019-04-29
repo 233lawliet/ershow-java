@@ -49,4 +49,20 @@ public class FoodsOthersService  {
         result.setComments(result.getComments()+1);
         return foodsOthersMapper.addComments(result);
     }
+
+
+
+    public Integer getSumViews(){
+        return  foodsOthersMapper.getSumViews();
+    }
+
+    public Integer getSumCOmments(){
+        return  foodsOthersMapper.getSumComments();
+    }
+
+    public Integer getSumPids(){
+        return  foodsOthersMapper.getSumPids();
+    }
+
+
 }

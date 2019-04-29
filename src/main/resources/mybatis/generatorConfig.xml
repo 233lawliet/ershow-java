@@ -50,7 +50,7 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
 
-        <table tableName="pid" domainObjectName="Pid"
+        <table tableName="collect" domainObjectName="Collect"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false" />

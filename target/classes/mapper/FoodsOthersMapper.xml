@@ -67,4 +67,22 @@
   <select id="getFoodsOthers" resultType="com.lutong.ershow.bean.FoodsOthers" parameterType="com.lutong.ershow.bean.FoodsOthers">
     select * from foodsOthers where foodsId = #{foodsid}
   </select>
+
+
+
+
+  <select id="getSumViews" resultType="Integer">
+  select sum(views) from foodsOthers
+</select>
+
+  <select id="getSumComments" resultType="Integer">
+  select sum(comments) from foodsOthers
+</select>
+
+  <select id="getSumPids" resultType="Integer">
+  select sum(pids) from foodsOthers
+</select>
+
+
+
 </mapper>

@@ -52,6 +52,11 @@
     select * from user where userId =#{userid}
   </select>
 
+
+  <select id="allUsers" resultType="com.lutong.ershow.bean.User">
+    select * from user
+  </select>
+
   <update id="updateUserInfo" parameterType="com.lutong.ershow.bean.User"   >
     UPDATE user
 

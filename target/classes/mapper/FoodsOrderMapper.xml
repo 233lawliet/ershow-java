@@ -46,4 +46,22 @@
     select * from foodsOrder where sellerId =#{sellerid} order by  orderId desc
   </select>
 
+
+  <select id="getAllFoodsOrder" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
+    select * from foodsOrder order by  orderId desc
+  </select>
+
+
+  <select id="getFoodsOrderByOrderID" parameterType="Integer" resultType="com.lutong.ershow.bean.FoodsOrder">
+    select * from foodsOrder where orderId =#{orderid} order by  orderId   desc
+  </select>
+
+
+
+  <select id="getCountOrder" resultType="Integer">
+    select  count(*) from foodsOrder
+  </select>
+
+
+
 </mapper>

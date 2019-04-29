@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+	<!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+
+        <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+
+    <script>
+        //商品的详细的详细信息asd
+        function detail(userid) {
+            var userVue= new Vue({
+                el: '#userDetail',
+                data: {
+                    item: {}
+                },
+            });
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:8080/getFoodsOrderByOrderID",
+                data:{
+                    orderid:userid
+                },
+                dataType:"json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success:function(data){
+                    userVue.item=data
+                },
+            });
+        };
+
+
+        //所有订单的信息
+        function allUsers() {
+            var vue1= new Vue({
+                el: '#userTbody',
+                data: {
+                    items: []
+                },
+                methods:{
+                    //查看详情
+                    buttonDetail :function (userid) {
+                        detail(userid)
+                    },
+                }
+            });
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:8080/getAllFoodsOrder",
+                dataType:"json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success:function(data){
+                    vue1.items=data
+                },
+            });
+
+        }
+    </script>
+
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+
+
+            //所有商品的信息
+            allUsers();
+
+
+
+
+            //数据的清空
+            $('#myModal1').on('hidden.bs.modal', function (){
+                //重新加载页面  哈哈  牛皮
+                location.reload();
+            });
+            $('#myModal2').on('hidden.bs.modal', function (){
+                //重新加载页面  哈哈  牛皮
+                location.reload();
+            });
+
+
+        });
+    </script>
+
+
+
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index"><i class="fa fa-gear"></i> <strong>拍卖系统后台管理</strong></a>
+            </div>
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <a href="index"><i class="fa fa-dashboard"></i> 总览</a>
+                    </li>
+
+
+                    <li>
+                        <a href="table"><i class="fa fa-table"></i> 用户管理</a>
+                    </li>
+
+                    <li>
+                        <a href="table2"><i class="fa fa-table"></i> 商品管理</a>
+                    </li>
+
+                    <li>
+                        <a href="table3"><i class="fa fa-table"></i> 订单管理</a>
+                    </li>
+
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            订单信息统计模块
+                        </h1>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Advanced Tables -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                商品信息表
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                        <tr>
+
+                                            <th>订单ID</th>
+                                            <th>商品ID</th>
+                                            <th>商品名称</th>
+                                            <th>商家姓名</th>
+                                            <th>交易地点</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="userTbody">
+                                    <tr class='gradeA odd'  v-for="item in items">
+                                        <td class='center'>{{item.orderid}}</td>
+                                        <td class='center'>{{item.foodsid}}</td>
+                                        <td class='center'>{{item.foodsname}}</td>
+                                        <td class='center'>{{item.sellername}}</td>
+                                        <td class='center'>{{item.tranplace}}</td>
+                                        <td class='center'>
+                                            <button  @click="buttonDetail(item.orderid)" class='btn btn-primary btn-sm' data-toggle='modal' data-target='#myModal1'>查看详情</button>
+                                         </td>
+                                    </tr>;
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+               <footer><p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p></footer>
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery /easypiechart-data.jsJs -->
+    <!-- jQuery /easypiechart-data.jsJs -->
+
+
+
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        交易订单信息
+                    </h4>
+                </div>
+                <div class="modal-body" id="userDetail">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseOne">
+                                       基本信息
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body" >
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <thead>
+
+                                                </thead>
+                                                <tbody >
+                                                <tr>
+                                                    <td>订单ID</td>
+                                                    <td >{{item.orderid}}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>商品ID</td>
+                                                    <td >{{item.foodsid}}</td>                                                </tr>
+                                                <tr>
+                                                    <td>商品名称</td>
+                                                    <td >{{item.foodsname}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>交易地点</td>
+                                                    <td >{{item.tranplace}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseTwo">
+                                        店家信息
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>店家ID</td>
+                                                <td>{{item.sellerid}}</td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>店家姓名</td>
+                                                <td>{{item.sellername}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>起拍价格</td>
+                                                <td>{{item.sellerprice}} 元</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseThree">
+                                        买家信息
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>买家ID</td>
+                                                <td>{{item.buyerid}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>买家姓名</td>
+                                                <td>{{item.buyername}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>成交价格</td>
+                                                <td>{{item.buyerprice}} 元</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">
+                        竞拍记录
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-group" id="accordion2">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive table-bordered">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>竞拍者姓名</th>
+                                        <th>竞拍价格</th>
+                                        <th>竞拍时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="pidDetail">
+                                    <tr  v-for="(item,index) in items">
+                                        <td>{{index+1}}</td>
+                                        <td>{{item.nickname}}</td>
+                                        <td>{{item.pidprice}}元</td>
+                                        <td>{{item.pidtime|formatDate}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+
+
+
+</body>
+</html>
+
+
+

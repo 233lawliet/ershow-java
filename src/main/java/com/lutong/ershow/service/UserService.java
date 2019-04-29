@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author lutong
  * @date 4/5/2019 - 9:40 PM
@@ -38,4 +40,8 @@ public class UserService  {
         return  userMapper.updateUserInfo(user);
     }
 
+
+    public List<User> allUsers(){
+        return userMapper.allUsers();
+    }
 }

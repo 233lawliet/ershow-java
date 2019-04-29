@@ -3,6 +3,8 @@ package com.lutong.ershow.mapper;
 import com.lutong.ershow.bean.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserMapper {
     int insert(User record);
@@ -21,6 +23,9 @@ public interface UserMapper {
     //更新用户的信息
     Integer updateUserInfo(User user);
 
+
+    //获取所有用户的信息
+    List<User> allUsers();
 
 
 }

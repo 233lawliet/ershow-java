@@ -23,5 +23,12 @@ public interface FoodsOrderMapper {
     //获取某个人销售信息foodS信息
     List<FoodsOrder> getFoodsOrderBySeller(Integer buyerId);
 
+    //获取所有订单  buyID没有用
+    List<FoodsOrder> getAllFoodsOrder(Integer buyerId);
+
+    FoodsOrder getFoodsOrderByOrderID (Integer orderid);
+
+    Integer getCountOrder();
+
 
 }

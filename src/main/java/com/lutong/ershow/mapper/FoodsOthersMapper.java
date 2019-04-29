@@ -16,4 +16,12 @@ public interface FoodsOthersMapper {
 
     //根据id获取foodsOthers
     public FoodsOthers getFoodsOthers(FoodsOthers foodsOthers);
+
+
+
+    //获取所有的view, comments,pids
+
+    public Integer getSumViews();
+    public Integer getSumComments();
+    public Integer getSumPids();
 }

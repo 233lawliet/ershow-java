@@ -30,4 +30,25 @@ public class FoodsOrderController {
     public List<FoodsOrder> getFoodsOrderBySellerId(Integer sellerId){
         return  foodsOrderService.getFoodsOrderBySeller(sellerId);
     }
+
+    @ResponseBody
+    @RequestMapping("getAllFoodsOrder")
+    public List<FoodsOrder> getAllFoodsOrder(Integer sellerId){
+        return  foodsOrderService.getAllFoodsOrder(sellerId);
+    }
+
+
+    @ResponseBody
+    @RequestMapping("getFoodsOrderByOrderID")
+    public FoodsOrder getFoodsOrderByOrderID(Integer orderid){
+        return  foodsOrderService.getFoodsOrderByOrderID(orderid);
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping("getCountOrder")
+    public Integer getCountOrder(){
+        return  foodsOrderService.getCountOrder();
+    }
 }

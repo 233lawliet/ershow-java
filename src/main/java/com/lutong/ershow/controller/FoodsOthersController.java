@@ -20,7 +20,7 @@ public class FoodsOthersController {
 
 
 
-    //添加楼的评论
+    //添加楼的评论+
     @ResponseBody
     @RequestMapping("addComments")
     public int addsComments(FoodsOthers foodsOthers){
@@ -41,7 +41,25 @@ public class FoodsOthersController {
     @RequestMapping("addPids")
     public int addsPids(FoodsOthers foodsOthers){
         return foodsOthersService.addPids(foodsOthers);
+    }
 
+
+    @ResponseBody
+    @RequestMapping("getSumViews")
+    public Integer getSumViews(){
+        return  foodsOthersService.getSumViews();
+    }
+
+    @ResponseBody
+    @RequestMapping("getSumCOmments")
+    public Integer getSumCOmments(){
+        return  foodsOthersService.getSumCOmments();
+    }
+
+    @ResponseBody
+    @RequestMapping("getSumPids")
+    public Integer getSumPids(){
+        return  foodsOthersService.getSumPids();
     }
 
 }

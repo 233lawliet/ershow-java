@@ -1,24 +1,422 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>这个是index页面</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+
+     
 </head>
+<style type="text/css">
+    .myTable-container {
+        width: 800px;
+        height: 430px;
+    }
+</style>
+
 <body>
-    <h2>插入商品的表单</h2>
-    <form action="http://localhost:8080/insertFoods">
-        商品名字<input type="text" name="foodsname"><br>
-        商品类型<input type="text" name="typeid"><br>
-        商品介绍<input type="text" name="foodsinfo"><br>
-        商品图片1<input type="text" name="image1"><br>
-        商品图片2<input type="text" name="image2"><br>
-        商品图片3<input type="text" name="image3"><br>
-        店家id<input type="text" name="userid"><br>
-        店家<input type="text" name="username"><br>
-        起拍价格<input type="text" name="startprice"><br>
-        要求时限<input type="text" name="hours"><br>
-        交易场所<input type="text" name="place"><br>
-        <input type="submit">
-    </form>
+
+
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index"><i class="fa fa-gear"></i> <strong>拍卖系统后台管理</strong></a>
+            </div>
+
+
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+		<div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="index"><i class="fa fa-dashboard"></i> 总览</a>
+                    </li>
+
+
+                    <li>
+                        <a href="table"><i class="fa fa-table"></i> 用户管理</a>
+                    </li>
+
+                    <li>
+                        <a href="table2"><i class="fa fa-table"></i> 商品管理</a>
+                    </li>
+
+                    <li>
+                        <a href="table3"><i class="fa fa-table"></i> 订单管理</a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            总览信息统计模块
+                        </h1>
+						<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+
+</ol>
+                    </div>
+                </div>
+				
+				
+                <!-- /. ROW  -->
+                <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-green green">
+                            <div class="panel-left pull-left green">
+                                <i class="fa fa-eye fa-5x"></i>
+
+                            </div>
+                            <div class="panel-right" id="allViews">
+                                <h3 > {{allViews}}</h3>
+                                <strong>总 访 问 量</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-blue">
+                            <div class="panel-left pull-left blue">
+                                <i class="fa fa-users fa-5x"></i>
+                            </div>
+
+                            <div class="panel-right" id="allPids">
+                                <h3>{{allPids}}</h3>
+                                <strong>总 竞 拍 量</strong>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-red">
+                            <div class="panel-left pull-left red">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+
+                            </div>
+                            <div class="panel-right" id="allOrders">
+                                <h3>{{allOrders}}</h3>
+                                <strong>总 成 交 量</strong>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-brown">
+                            <div class="panel-left pull-left brown">
+                                <i class="fa fa fa-comments fa-5x "></i>
+
+                            </div>
+                            <div class="panel-right" id="allComments">
+                                <h3>{{allComments}}</h3>
+                                <strong>总 评 价 量</strong>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                近七天交易统计
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="container" style="padding-top: 5%; padding-left: 10%">
+                                    <ul id="myTab" class="nav nav-tabs">
+                                        <li class="active" ><a href="#tab1" data-toggle="tab">简介</a></li>
+
+                                        <li ><a href="#tab2" data-toggle="tab">竞拍统计</a></li>
+                                        <li><a href="#tab3" data-toggle="tab">拍卖统计</a></li>
+                                    </ul>
+
+                                    <div id="myTabContent" class="tab-content">
+                                        <div class="tab-pane active" id="tab1">
+                                            <div id="tab1-container" class="myTable-container"></div>
+                                        </div>
+                                        <div class="tab-pane  " id="tab2">
+                                            <div id="tab2-container" class="myTable-container"></div>
+                                        </div>
+                                        <div class="tab-pane " id="tab3">
+                                            <div id="tab3-container" class="myTable-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+				<footer><p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+				
+        
+				</footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+
+
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="js/echarts.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+        //获取图标的数据
+
+        var days=[];
+        var pids=[];
+        var sells=[];
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/getCountByDay",
+            dataType: "json",
+            header: {
+                'content-type': 'application/json' // 默认值
+            },
+            success: function (data) {
+                for(var i = data.length-1; i >=0 ; i--) {
+                    days.push(data[i].y);
+
+                    pids.push(data[i].a);
+                    sells.push(data[i].b);
+
+                };
+            },
+        })
+
+
+
+        var $tab1 = document.getElementById('tab1-container');
+        var $tab2 = document.getElementById('tab2-container');
+        var $tab3 = document.getElementById('tab3-container');
+
+
+
+        /* 饼图 */
+
+
+        var tab2Option = {
+            title : {
+                text : '站点：竞拍/拍卖周状况统计',
+                subtext : '详情右侧标签',
+                x : 'center'
+            },
+
+
+        };
+
+
+
+            /* 折线图 */
+            var tab1Option = {
+                xAxis : {
+                    type : 'category',
+                    data : days
+                },
+                yAxis : {
+                    type : 'value'
+                },
+                series : [ {
+                    data : pids,
+                    type : 'line'
+                } ]
+            };
+
+
+        /* 柱图  */
+        var tab3Option = {
+            xAxis : {
+                type : 'category',
+                data : days
+            },
+            yAxis : {
+                type : 'value'
+            },
+            series : [ {
+                data : sells,
+                type : 'bar'
+            } ]
+        };
+
+        /* 初始化tab1的 */
+        var tab1Table = echarts.init($tab1);
+        tab1Table.setOption(tab2Option);
+
+        /* shown.bs.tab为tab选项卡高亮 */
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            /* 获取已激活的标签页的名称 */
+            /* hash 属性是一个可读可写的字符串，该字符串是 URL 从 # 号开始的部分 */
+            var activeTab = $(e.target)[0].hash;
+            /* 当相应的标签被点击时，进行对应的图表渲染 */
+            if (activeTab == "#tab2") {
+                /* 释放图表实例，使实例不可用,不加上这个，会报错： */
+                /* there is a chart instance     already initialized on the dom */
+                echarts.dispose($tab2);
+                var tab2Table = echarts.init($tab2);
+                tab2Table.setOption(tab1Option);
+            } else if (activeTab == "#tab3") {
+                echarts.dispose($tab3);
+                var tab3Table = echarts.init($tab3);
+                tab3Table.setOption(tab3Option);
+            }
+        });
+
+
+            var vue1= new Vue({
+                el: '#allViews',
+                data: {
+                    allViews: 0
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/getSumViews",
+                dataType: "json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success: function (data) {
+                    console.log(data)
+                    vue1.allViews = data
+
+                },
+            });
+
+
+
+            var vue2= new Vue({
+                el: '#allComments',
+                data: {
+                    allComments: 0
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/getSumCOmments",
+                dataType: "json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success: function (data) {
+                    vue2.allComments = data
+                },
+            })
+
+            var vue3= new Vue({
+                el: '#allPids',
+                data: {
+                    allPids: 0
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/getSumPids",
+                dataType: "json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success: function (data) {
+                    vue3.allPids = data
+                },
+            })
+
+
+            var vue4= new Vue({
+                el: '#allOrders',
+                data: {
+                    allOrders: 0
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/getCountOrder",
+                dataType: "json",
+                header: {
+                    'content-type': 'application/json' // 默认值
+                },
+                success: function (data) {
+                    vue4.allOrders = data
+                },
+            })
+
+        });
+    </script>
+
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+
+    <script src="assets/js/morris/morris.js"></script>
+
+
+	<script src="assets/js/easypiechart.js"></script>
+	<script src="assets/js/easypiechart-data.js"></script>
+
+
 </body>
+
 </html>
